@@ -44,6 +44,14 @@ pip install django==1.9.5
 pip install msgpack (para satisfazer o pip)
 python -m pip install --upgrade pip (para atualizar o pip)
 
+################
+Step 5.5:
+Criar no github um repositorio vazio com o noe da aplicação, copiar a url do repositorio
+entrar no diretorio onde vai ser criado pelo git o diretorio do repositorio
+eecutar git clone "url copiada do repositorio recem criado"
+sera ciado um diretorio com o nome da aplicação"nome do repositorio no github"
+esse passa a ser o diretorio base(diretorio de trabalho para essa aplicação)
+################
 
 Step 6:
 django-admin startproject ecommerce
@@ -130,7 +138,7 @@ e criar um templete para cada uso(produtos, lista de produtos, contato) nesses t
 ####html aqui#####
 {% endblock %}
 
-
+Step 12:
 Testes
 ao inves de usar o arquivo tests.py criado pelo django, 
    remover esse arquivo, 
@@ -140,4 +148,78 @@ ao inves de usar o arquivo tests.py criado pelo django,
 
 para executar os testes:
 python manage.py test
+
+########
+Step 13:
+deploy no heroku
+https://dashboard.heroku.com/apps
+
+Acrecentar informaçoes na aplicação:
+arquivos e conteudos:
+
+- runtime.txt (arquivo que indica qual a versao do python vai ser usada para execução da aplicação)
+   python-3.6.6
+
+
+- requirements.txt (arfquivo que indica quais as bibliotecas e respectivas versoes devem ser intaladas para a app funcionar)
+dj_database_url==0.4.2
+Django==1.9.6
+whitenoise==4.0
+gunicorn==19.5
+psycopg2==2.7
+
+
+- Procfile (sem extensao mesmo, arquivo responssavel pela execução da app no heroku)
+web: python manage.py runserver 0.0.0.0:$PORT
+
+
+- LICENSE (pegar seu conteudo no github dessa app)
+
+OBS: todos esses arquivos devem estar no dirbase, junto ao README.md
+
+- arquivo settings.py (dentro do diretorio da app principal com o mesmo nome do diretorio superior)
+  pegar alterações no github
+
+
+- arquivo local_settings.py (dentro do diretorio da app principal com o mesmo nome do diretorio superior)
+  pegar alterações no github
+OBS: usado para sobrepor com informaçoes do deploy local, esse arquivo nao pode estar no github
+
+
+- alterar o arquivo .gitignore para ignorar esse arquivo e nao leva-lo para o repositorio
+
+
+- configurar o heroku para usar o repositorio do github
+
+
+- instalar cliente do heroku no windows, logar nesse cliente
+
+
+- cliar no botao "Deploy Branch" para que o heroku faça o deploy da aplicação
+
+
+- acessar a aplicação pela web para confirmar que esta tudo correto
+
+
+Step 14:
+executar o migrate para executar a geração das diverssas bases de dados do django
+python manage.py migrate(caso ja tenha sido executado nao fara nada)
+
+depois disso fica acessivel a tela de login do admin do django
+http://localhost:8000/admin/
+
+
+Step 15:
+Criando a aplicaçao que tem os modelos utilizados na app ecommerce
+python manage.py startapp catalog
+vamos altear o arquivo models.py dentro de catalog com os modelos da aplicação
+incluir essa aplicação no arquivo settings.py na sessao INSTALLED_APPS
+
+Step 16:
+executar o makemigrations (para idenficar os modelos criados e preparar sua inclusao no banco)
+python manage.py makemigrations
+
+Step 17:
+executar migrate novamente para que as tabelasa sejam criadas no banco de dados
+python manage.py migrate 
 
