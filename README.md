@@ -223,3 +223,10 @@ Step 17:
 executar migrate novamente para que as tabelasa sejam criadas no banco de dados
 python manage.py migrate 
 
+
+Step18 :
+Vamos utilizar o SqliteStudio para visualizar o banco de dados e as tabelas
+
+
+Step19 :
+
