@@ -229,4 +229,29 @@ Vamos utilizar o SqliteStudio para visualizar o banco de dados e as tabelas
 
 
 Step19 :
+Criar uma categiram um produto e interagir com eles
+instalar o ipython (jupiter notebook sem interface web)
+pip install ipython
 
+utilizar assim:
+python manage.py shell
+
+
+Category.objects.create(name='Programação',slug='programacao') (criando uma categoria)
+
+cat = Category.objects.all()[0]
+
+Product.objects.create(name='Curso de Django', slup='curso-de-django',price=100,category=cat)
+
+produto = Product.objects.all()[0]
+
+produto.name (retorna o nomde do produto criado)
+produto.category.name (retorna o nome da categoria do produto)
+
+
+Step20 :
+Criar usuario para acessar o /admin do django
+python manage.py createsuperuser
+
+
+Step21 :
