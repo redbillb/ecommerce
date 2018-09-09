@@ -255,3 +255,4 @@ python manage.py createsuperuser
 
 
 Step21 :
+aula 21 listando produtos(colocar ps comentarios a partir dessa aula)
